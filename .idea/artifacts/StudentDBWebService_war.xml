@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="StudentDBWebService:war">
+    <output-path>$PROJECT_DIR$/out/artifacts/StudentDBWebService_war</output-path>
+    <root id="archive" name="StudentDBWebService_war.war">
+      <element id="artifact" artifact-name="StudentDBWebService:war exploded" />
+    </root>
+  </artifact>
+</component>
