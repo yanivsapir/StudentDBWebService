@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import il.ac.shenkar.sqlCourse.dao.contracts.TeacherDao;
 import il.ac.shenkar.sqlCourse.entities.Course;
 import il.ac.shenkar.sqlCourse.entities.Teacher;
+import il.ac.shenkar.sqlCourse.entities.connectors.TeacherCourse;
 import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Projections;
@@ -34,12 +35,8 @@ public class TeacherDaoImpl implements TeacherDao {
 
     @Override
     @Transactional
-    public List<Course> getTeacherCoursesByTeacherId(int id) {
-
-        List<Course> courses = new ArrayList<>();
-        getTeacherByID(id).getTeacherCourses()
-                .forEach(teacherCourse -> courses.add(teacherCourse.getCourse()));
-        return courses;
+    public List<TeacherCourse> getTeacherCoursesByTeacherId(int id) {
+        return getTeacherByID(id).getTeacherCourses();
     }
 
     @Override

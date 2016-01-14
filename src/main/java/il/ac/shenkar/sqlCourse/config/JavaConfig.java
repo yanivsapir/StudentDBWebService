@@ -68,6 +68,11 @@ public class JavaConfig {
     }
 
     @Bean
+    public CourseQueriesDao courseQueriesDao(){
+        return new CourseQueriesDaoImpl(sessionFactory());
+    }
+
+    @Bean
     public TeacherCourseDao teacherCourseDao(){ return new TeacherCourseDaoImpl(sessionFactory()); }
 
     @Bean

@@ -5,6 +5,7 @@ import il.ac.shenkar.sqlCourse.dao.contracts.TeacherDao;
 import il.ac.shenkar.sqlCourse.entities.Course;
 import il.ac.shenkar.sqlCourse.entities.Teacher;
 import il.ac.shenkar.sqlCourse.entities.connectors.TeacherCourse;
+import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
@@ -46,13 +47,14 @@ public class TeacherCourseDaoImpl implements TeacherCourseDao{
 
     @Override
     @Transactional
-    public void deleteTeacherCourse(TeacherCourse teacherCourse) {
-        sessionFactory.getCurrentSession().delete(teacherCourse);
+    public void deleteTeacherCourse(int id) {
+        Query q = sessionFactory.getCurrentSession().createQuery("delete TeacherCourse where id = " + id);
+        q.executeUpdate();
     }
 
     @Override
     @Transactional
     public void insertNewTeacherCourseToDB(TeacherCourse teacherCourse) {
-        sessionFactory.getCurrentSession().persist(teacherCourse);
+        sessionFactory.getCurrentSession().save(teacherCourse);
     }
 }

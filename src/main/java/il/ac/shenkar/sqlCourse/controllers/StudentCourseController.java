@@ -39,10 +39,10 @@ public class StudentCourseController {
         return new ResponseEntity<String>(HttpStatus.OK);
     }
 
-    @RequestMapping(path = "/deleteStudentCourse", method = RequestMethod.POST)
-    public ResponseEntity<String> deleteStudentCourse(@RequestBody StudentCourse studentCourse) {
+    @RequestMapping(path = "/deleteStudentCourse/{id}", method = RequestMethod.POST)
+    public ResponseEntity<String> deleteStudentCourse(@PathVariable int id) {
 
-        studentCourseDao.deleteStudentCourse(studentCourse);
+        studentCourseDao.deleteStudentCourse(id);
         return new ResponseEntity<String>(HttpStatus.OK);
     }
 

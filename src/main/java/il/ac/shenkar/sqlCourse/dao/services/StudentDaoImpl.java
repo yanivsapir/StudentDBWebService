@@ -3,6 +3,8 @@ package il.ac.shenkar.sqlCourse.dao.services;
 import il.ac.shenkar.sqlCourse.dao.contracts.StudentDao;
 import il.ac.shenkar.sqlCourse.entities.Course;
 import il.ac.shenkar.sqlCourse.entities.Student;
+import il.ac.shenkar.sqlCourse.entities.connectors.StudentCourse;
+import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -25,17 +27,14 @@ public class StudentDaoImpl implements StudentDao {
     public List<Student> getAllStudents() {
 
         return (List<Student>) sessionFactory.getCurrentSession()
-                .createCriteria(Student.class).list();
+                .createCriteria(Student.class).setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY).list();
     }
 
     @Override
     @Transactional
-    public List<Course> getStudentCoursesByStudentId(int id) {
+    public List<StudentCourse> getStudentCoursesByStudentId(int id) {
 
-        List<Course> courses = new ArrayList<>();
-        getStudentByID(id).getStudentCourses()
-                .forEach(teacherCourse -> courses.add(teacherCourse.getCourse()));
-        return courses;
+        return getStudentByID(id).getStudentCourses();
     }
 
     @Override

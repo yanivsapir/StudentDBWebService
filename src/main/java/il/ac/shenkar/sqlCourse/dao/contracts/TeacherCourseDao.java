@@ -15,6 +15,6 @@ public interface TeacherCourseDao {
     public List<TeacherCourse> getAllTeacherCourses();
     public TeacherCourse getTeacherCourseById(int id);
     public void updateTeacherCourse(TeacherCourse teacherCourse);
-    public void deleteTeacherCourse(TeacherCourse teacherCourse);
+    public void deleteTeacherCourse(int id);
     public void insertNewTeacherCourseToDB(TeacherCourse teacherCourse);
 }

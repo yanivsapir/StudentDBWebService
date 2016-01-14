@@ -13,7 +13,8 @@ import java.util.List;
 public interface CourseDao {
     public List<Course> getAllCourses();
     public Course getCourseByName(String name);
+    public Course getCourseById(int id);
     public void updateCourse(Course course);
-    public void deleteCourseFromDB(Course course);
+    public void deleteCourseFromDB(int id);
     public void insertNewCourse(Course course);
 }

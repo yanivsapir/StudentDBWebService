@@ -3,6 +3,7 @@ package il.ac.shenkar.sqlCourse.controllers;
 import il.ac.shenkar.sqlCourse.dao.contracts.StudentDao;
 import il.ac.shenkar.sqlCourse.entities.Course;
 import il.ac.shenkar.sqlCourse.entities.Student;
+import il.ac.shenkar.sqlCourse.entities.connectors.StudentCourse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -34,7 +35,7 @@ public class StudentController {
     }
 
     @RequestMapping(path="/getStudentCoursesByStudentId/{id}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public List<Course> getStudentCoursesByStudentId(@PathVariable int id) {
+    public List<StudentCourse> getStudentCoursesByStudentId(@PathVariable int id) {
 
         return studentDao.getStudentCoursesByStudentId(id);
     }

@@ -14,6 +14,6 @@ public interface StudentCourseDao {
     public List<StudentCourse> getAllStudentCourses();
     public StudentCourse getStudentCourseByID(int Id);
     public void updateStudentCourse(StudentCourse studentCourse);
-    public void deleteStudentCourse(StudentCourse studentCourse);
+    public void deleteStudentCourse(int id);
     public void insertNewStudentCourse(StudentCourse studentCourse);
 }

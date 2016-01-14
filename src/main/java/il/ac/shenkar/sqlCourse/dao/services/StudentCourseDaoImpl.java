@@ -2,6 +2,7 @@ package il.ac.shenkar.sqlCourse.dao.services;
 
 import il.ac.shenkar.sqlCourse.dao.contracts.StudentCourseDao;
 import il.ac.shenkar.sqlCourse.entities.connectors.StudentCourse;
+import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -41,13 +42,14 @@ public class StudentCourseDaoImpl implements StudentCourseDao {
 
     @Override
     @Transactional
-    public void deleteStudentCourse(StudentCourse studentCourse) {
-        sessionFactory.getCurrentSession().delete(studentCourse);
+    public void deleteStudentCourse(int id) {
+        Query q = sessionFactory.getCurrentSession().createQuery("delete StudentCourse where id = " + id);
+        q.executeUpdate();
     }
 
     @Override
     @Transactional
     public void insertNewStudentCourse(StudentCourse studentCourse) {
-        sessionFactory.getCurrentSession().persist(studentCourse);
+        sessionFactory.getCurrentSession().save(studentCourse);
     }
 }

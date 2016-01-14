@@ -32,6 +32,11 @@ public class CourseController {
         return courseDao.getCourseByName(name);
     }
 
+    @RequestMapping(path="/getCourseById/{id}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public Course getCourseById(@PathVariable int id) {
+        return courseDao.getCourseById(id);
+    }
+
     @RequestMapping(path = "/updateCourse", method = RequestMethod.POST)
     public ResponseEntity<String> updateCourse(@RequestBody Course course) {
 
@@ -39,10 +44,10 @@ public class CourseController {
         return new ResponseEntity<String>(HttpStatus.OK);
     }
 
-    @RequestMapping(path = "/deleteCourse", method = RequestMethod.POST)
-    public ResponseEntity<String> deleteCourse(@RequestBody Course course) {
+    @RequestMapping(path = "/deleteCourse/{id}", method = RequestMethod.POST)
+    public ResponseEntity<String> deleteStudent(@PathVariable int id) {
 
-        courseDao.deleteCourseFromDB(course);
+        courseDao.deleteCourseFromDB(id);
         return new ResponseEntity<String>(HttpStatus.OK);
     }
 
